@@ -1,0 +1,17 @@
+x_width_pix = 1000
+x_width_real = 100
+x_mid = 50
+x_pos = 300
+x_pos_real = 30
+zoom = 1.05
+
+
+new
+x_width_pix = 1000
+x_width_real = 100 * 1.05 = 95
+x_pos = 300
+x_pos_real = 30
+x_min_real = 30 - 300 * (95 / 1000) = 1.5
+x_max_real = 30 + 700 * (95 / 1000) = 96.5
+offset_x += x_pos_real - x_pos_pix * x_width_real_new / x_width_pix
+x_min_real = (95 - 30) / 700 * 300
