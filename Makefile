@@ -1,4 +1,4 @@
-SRCS = fractol.c mandelbrot.c utils.c events.c color_image.c
+SRCS = fractol.c mandelbrot.c utils.c events.c color_image.c complex.c
 
 OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
@@ -9,7 +9,8 @@ LIB_FOLDER = minilibx
 LIB_NAME = libmlx.a
 LIB_COMPILE = mlx
 
-CFLAGS = -Wall -Werror -Wextra -lm -lX11 -lXext
+CFLAGS = -Wall -Werror -Wextra
+INCLUDES = -L$(LIB_FOLDER) -l$(LIB_COMPILE) -lm -lX11 -lXext
 
 all: $(NAME)
 bonus: $(NAME_BONUS)
@@ -18,7 +19,7 @@ $(LIB_FOLDER)/$(LIB_NAME):
 	$(MAKE) -C $(LIB_FOLDER)
 
 $(NAME): $(OBJS) $(LIB_FOLDER)/$(LIB_NAME)
-	cc $(CFLAGS) $(OBJS) -L$(LIB_FOLDER) -l$(LIB_COMPILE) -o $(NAME)
+	cc $(CFLAGS) $(OBJS) $(INCLUDES) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
