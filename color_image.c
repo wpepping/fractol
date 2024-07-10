@@ -6,37 +6,36 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:38:33 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/09 19:48:16 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/10 16:21:45 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	ft_image(t_fractol data, void (*f)(t_fractol f, double complex c, char *r))
+int	ft_image(t_fractol data, void (*f)(t_fractol f, t_complex, char *r))
 {
-	t_xy	coor;
+	t_xy	xy;
 	char	color[4];
 
-	coor.x_inc = 4.0 * data.zoom / X;
-	coor.y_inc = 4.0 * data.zoom / Y;
-	coor.x_pix = 0;
-	coor.x = (-1.0 * SCALE + data.offset_x) * data.zoom;
-	coor.y_start = (-1.0 * SCALE + data.offset_y) * data.zoom;
-	while (coor.x_pix < X)
+	xy.x_inc = 4.0 * data.zoom / X;
+	xy.y_inc = 4.0 * data.zoom / Y;
+	xy.x_pix = 0;
+	xy.x = pix2val(data, 0, 0);
+	xy.y_start = pix2val(data, 0, 1);
+	while (xy.x_pix < X)
 	{
-		coor.y_pix = 0;
-		coor.y = coor.y_start;
-		while (coor.y_pix < Y)
+		xy.y_pix = 0;
+		xy.y = xy.y_start;
+		while (xy.y_pix < Y)
 		{
-			(*f)(data, coor.x + coor.y * _Complex_I,
-				color);
-			ft_memcpy(data.imgbuff + ((coor.y_pix * X + coor.x_pix) * 4),
+			(*f)(data, (t_complex){xy.x, xy.y}, color);
+			ft_memcpy(data.imgbuff + (xy.y_pix * data.lsize + xy.x_pix * 4),
 				color, 4);
-			coor.y_pix++;
-			coor.y += coor.y_inc;
+			xy.y_pix++;
+			xy.y += xy.y_inc;
 		}
-		coor.x_pix++;
-		coor.x += coor.x_inc;
+		xy.x_pix++;
+		xy.x += xy.x_inc;
 	}
 	return (0);
 }

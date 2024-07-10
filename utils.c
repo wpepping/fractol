@@ -6,11 +6,20 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:53:51 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/09 19:41:55 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/10 16:17:28 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+double	pix2val(t_fractol data, int n, int xy)
+{
+	double	result;
+
+	result = (1.0 * n - (0.5 * X)) / X * SCALE * 2 * data.zoom;
+	if (xy == 0) return (result + data.offset_x);
+	return (result + data.offset_y);
+}
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {

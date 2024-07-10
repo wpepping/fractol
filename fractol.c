@@ -6,13 +6,11 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:36:53 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/09 19:33:29 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/10 15:36:48 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-
 
 int	main(void)
 {
@@ -22,7 +20,8 @@ int	main(void)
 	data.mlx = mlx_init();
 	data.window = mlx_new_window(data.mlx, X, Y, "fract-ol");
 	data.image = mlx_new_image(data.mlx, X, Y);
-	data.imgbuff = mlx_get_data_addr(data.image, &temp, &temp, &(data.endian));
+	data.imgbuff = mlx_get_data_addr(data.image, &temp,
+			&(data.lsize), &(data.endian));
 	data.zoom = 1;
 	data.offset_x = 0;
 	data.offset_y = 0;

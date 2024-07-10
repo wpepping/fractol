@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:50:06 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/09 20:41:18 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/10 15:51:56 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,17 @@ int	handle_close(t_fractol *data)
 
 int	handle_zoom(int button, int x, int y, t_fractol *data)
 {
-	int		dist_x;
-	int		dist_y;
-	double	direction;
+	double	x_real;
+	double	y_real;
 
-	dist_x = X / 2 - x;
-	dist_y = Y / 2 - y;
+	x_real = pix2val(*data, x, 0);
+	y_real = pix2val(*data, y, 1);
 	if (button == 4)
-	{
-		direction = -1;
 		data->zoom = data->zoom / ZOOM_FACTOR;
-	}
 	if (button == 5)
-	{
-		direction = 1;
 		data->zoom = data->zoom * ZOOM_FACTOR;
-	}
-	data->offset_x += direction * dist_x / X / SCALE * ZOOM_FACTOR;
-	data->offset_y += direction * dist_y / Y / SCALE * ZOOM_FACTOR;
+	data->offset_x = x_real + (1.0 - 2.0 * x / X) * SCALE * data->zoom;
+	data->offset_y = y_real + (1.0 - 2.0 * y / Y) * SCALE * data->zoom;
 	ft_image(*data, &mandel);
 	mlx_put_image_to_window(data->mlx, data->window, data->image, 0, 0);
 	return (0);
