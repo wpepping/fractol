@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:36:53 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/11 19:01:09 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/11 20:29:51 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static void	init(t_fractol *data)
 
 static void	init_events(t_fractol *data)
 {
-	mlx_loop_hook(data->mlx, &handle_loop, data);
 	mlx_key_hook(data->window, &handle_input, data);
 	mlx_mouse_hook(data->window, &handle_zoom, data);
 	mlx_hook(data->window, DestroyNotify, StructureNotifyMask,
@@ -55,10 +54,12 @@ int	main(int argc, char *argv[])
 	if (check_input(&data, argc, argv))
 	{
 		init(&data);
-		ft_image(data, data.function);
+		crimage(data, data.function);
 		mlx_put_image_to_window(data.mlx, data.window, data.image, 0, 0);
 		init_events(&data);
 		mlx_loop(data.mlx);
+		mlx_destroy_window(data.mlx, data.window);
+		mlx_destroy_image(data.mlx, data.image);
 		mlx_destroy_display(data.mlx);
 		free(data.mlx);
 	}

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color_image.c                                      :+:      :+:    :+:   */
+/*   crimage.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:38:33 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/11 18:36:19 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/11 20:29:51 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ double	pix2val(t_fractol data, int n, int xy)
 	return (result + data.offset_y);
 }
 
-int	ft_image(t_fractol data, void (*f)(t_fractol f, t_complex, char *r))
+int	crimage(t_fractol data, void (*f)(t_fractol f, t_complex, char *r))
 {
 	t_xy	xy;
 	char	color[4];

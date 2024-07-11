@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:50:56 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/11 16:55:36 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/11 20:29:51 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int			handle_close(t_fractol *data);
 int			handle_zoom(int button, int x, int y, t_fractol *data);
 void		get_color(t_fractol data, int c[3], char *result);
 void		*ft_memcpy(void *dest, const void *src, size_t n);
-int			ft_image(t_fractol data, void (*f)(t_fractol f,
+int			crimage(t_fractol data, void (*f)(t_fractol f,
 					t_complex c, char *r));
 double		pix2val(t_fractol data, int n, int xy);
 double		c_real(t_complex c);

@@ -1,4 +1,4 @@
-SRCS = fractol.c mandelbrot.c utils.c events.c ft_image.c complex.c julia.c
+SRCS = fractol.c mandelbrot.c utils.c events.c crimage.c complex.c julia.c
 
 OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
