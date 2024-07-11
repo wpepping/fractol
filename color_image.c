@@ -6,11 +6,30 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:38:33 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/10 16:21:45 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/11 18:36:19 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	get_color(t_fractol data, int c[3], char *result)
+{
+	int	color;
+
+	color = (c[0] * 256 * 256 + c[1] * 256 + c[2]);
+	color = mlx_get_color_value(data.mlx, color);
+	ft_memcpy(result, &color, 4);
+}
+
+double	pix2val(t_fractol data, int n, int xy)
+{
+	double	result;
+
+	result = (1.0 * n - (0.5 * X)) / X * SCALE * 2 * data.zoom;
+	if (xy == 0)
+		return (result + data.offset_x);
+	return (result + data.offset_y);
+}
 
 int	ft_image(t_fractol data, void (*f)(t_fractol f, t_complex, char *r))
 {

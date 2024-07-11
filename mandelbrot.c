@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:50:38 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/10 16:28:11 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/11 13:11:08 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	mandel(t_fractol data, t_complex c, char *result)
 	z.real = 0;
 	z.imag = 0;
 	i = -1;
-	while (c_abs(z) <= 2 && ++i < MAX_ITERATIONS)
+	while (c_abs_square(z) <= R_SQ && ++i < MAX_ITERATIONS)
 		z = c_add(c_square(z), c);
-	if (c_abs(z) <= 2)
+	if (c_abs_square(z) <= R_SQ)
 		get_color(data, (int []){0, 0, 0}, result);
 	else if (i < 16)
 		get_color(data, (int []){50, 100 + 100 * i / 10, 255}, result);

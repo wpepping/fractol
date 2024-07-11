@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 16:17:35 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/10 16:35:25 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/11 13:06:11 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ double	c_imag(t_complex c)
 	return (c.imag);
 }
 
-double	c_abs(t_complex c)
+double	c_abs_square(t_complex c)
 {
-	return (sqrt(c.real * c.real + c.imag * c.imag));
+	return (c.real * c.real + c.imag * c.imag);
 }
 
 t_complex	c_square(t_complex c)

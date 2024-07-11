@@ -6,19 +6,26 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:53:51 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/10 16:17:28 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/11 19:00:09 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-double	pix2val(t_fractol data, int n, int xy)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	double	result;
+	unsigned int	i;
 
-	result = (1.0 * n - (0.5 * X)) / X * SCALE * 2 * data.zoom;
-	if (xy == 0) return (result + data.offset_x);
-	return (result + data.offset_y);
+	i = 0;
+	while (s1[i] != '\0' && s2[i] != '\0' && i < n)
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i += 1;
+	}
+	if (i == n)
+		return (0);
+	return (s1[i] - s2[i]);
 }
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
@@ -38,12 +45,46 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-void	get_color(t_fractol data, int c[3], char *result)
+static int	get_sign(char **str)
 {
-	int	color;
-
-	color = (c[0] * 256 * 256 + c[1] * 256 + c[2]);
-	color = mlx_get_color_value(data.mlx, color);
-	ft_memcpy(result, &color, 4);
+	if (**str == '-')
+	{
+		(*str)++;
+		return (-1);
+	}
+	return (1);
 }
 
+double	atod(char *str, double *res)
+{
+	int		dec;
+	int		sign;
+
+	*res = 0;
+	sign = get_sign(&str);
+	if ((*str < '0' || *str > '9') && (*str != '.' || *(str + 1) == '\0'))
+		return (0);
+	while (*str >= '0' && *str <= '9')
+	{
+		*res = *res * 10;
+		*res += *(str++) - '0';
+	}
+	if (*str == '\0')
+		return (1);
+	if (*(str++) != '.')
+		return (0);
+	dec = 1;
+	while (*str >= '0' && *str <= '9')
+		*res += 1.0 * (*(str++) - '0') / pow(10, dec++);
+	*res *= sign;
+	if (*str != '\0')
+		return (0);
+	return (1);
+}
+
+void	ft_putendl_fd(char *s, int fd)
+{
+	while (*s != '\0')
+		write(fd, s++, 1);
+	write(fd, "\n", 1);
+}
