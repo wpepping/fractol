@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wouter <wouter@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:50:38 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/11 13:11:08 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/11 22:25:39 by wouter           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	mandel(t_fractol data, t_complex c, char *result)
 	if (c_abs_square(z) <= R_SQ)
 		get_color(data, (int []){0, 0, 0}, result);
 	else if (i < 16)
-		get_color(data, (int []){50, 100 + 100 * i / 10, 255}, result);
+		get_color(data, (int []){10 * i, 10 * i, 60 + i * 10}, result);
 	else if (i > 35)
 		get_color(data, (int []){255, 255, 0}, result);
 	else
