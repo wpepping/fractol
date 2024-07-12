@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:36:53 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/11 20:29:51 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/12 15:35:31 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,13 @@ static int	check_input(t_fractol *data, int argc, char *argv[])
 	return (1);
 }
 
+static void	print_help(void)
+{
+	ft_putendl_fd("Usage: fractol [-m | -j <x> <y>]", 1);
+	ft_putendl_fd("  -m     Mandelbrot", 1);
+	ft_putendl_fd("  -j     Julia; x, y is the starting point", 1);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_fractol	data;
@@ -64,7 +71,6 @@ int	main(int argc, char *argv[])
 		free(data.mlx);
 	}
 	else
-		ft_putendl_fd(
-			"Usage: fractol [-m|-j <real part of z> <imaginary part of z>]", 1);
+		print_help();
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 18:36:33 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/11 19:59:33 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/12 15:18:21 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ void	julia(t_fractol data, t_complex z, char *result)
 	else if (i > 80)
 		get_color(data, (int []){255, 255, 0}, result);
 	else
-		get_color(data, (int []){2.5 * (i - 8), 2.5 * (i - 8), 60 + (i - 8) * 2.5}, result);
+		get_color(data, (int []){2.5 * (i - 8), 2.5 * (i - 8),
+			60 + (i - 8) * 2.5}, result);
 }
