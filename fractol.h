@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:50:56 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/13 15:41:47 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/13 22:26:43 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void		get_color(t_fractol *data, int c[3], char *result);
 void		*ft_memcpy(void *dest, const void *src, size_t n);
 void		crimage(t_fractol *data, void (*f)(t_fractol *f,
 					t_complex c, char *r));
-double		pix2val(t_fractol *data, int n, int xy);
+double		pix2val(t_fractol *data, double n, int xy);
 double		c_real(t_complex c);
 double		c_imag(t_complex c);
 double		c_abs_square(t_complex c);

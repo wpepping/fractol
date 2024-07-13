@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:38:33 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/13 15:32:16 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/13 22:51:01 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,13 @@ void	get_color(t_fractol *data, int c[3], char *result)
 	ft_memcpy(result, &color, 4);
 }
 
-double	pix2val(t_fractol *data, int n, int xy)
+double	pix2val(t_fractol *data, double n, int xy)
 {
-	double	result;
-
-	result = (1.0 * n - (0.5 * X)) / X * SCALE * 2 * data->zoom;
 	if (xy == 0)
-		return (result + data->offset_x);
-	return (result + data->offset_y);
+		return ((n - (0.5 * X)) / X * SCALE * 2 * data->zoom
+			- data->offset_x);
+	return (((0.5 * Y) - n) / Y * SCALE * 2 * data->zoom
+		- data->offset_y);
 }
 
 void	crimage(t_fractol *data, void (*f)(t_fractol *f, t_complex, char *r))
@@ -49,7 +48,7 @@ void	crimage(t_fractol *data, void (*f)(t_fractol *f, t_complex, char *r))
 			(*f)(data, (t_complex){xy.x, xy.y},
 				data->imgbuff + (xy.y_pix * data->lsize + xy.x_pix * 4));
 			xy.y_pix++;
-			xy.y += xy.y_inc;
+			xy.y -= xy.y_inc;
 		}
 		xy.x_pix++;
 		xy.x += xy.x_inc;
