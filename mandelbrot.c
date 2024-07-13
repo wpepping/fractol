@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wouter <wouter@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:50:38 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/11 22:25:39 by wouter           ###   ########.fr       */
+/*   Updated: 2024/07/13 15:30:12 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	mandel(t_fractol data, t_complex c, char *result)
+void	mandel(t_fractol *data, t_complex c, char *result)
 {
 	t_complex	z;
 	int			i;

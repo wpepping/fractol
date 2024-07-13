@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:50:56 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/12 15:38:18 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/13 15:30:47 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
+# include <X11/Xlib.h>
 # include <X11/keysym.h>
-# include "minilibx/mlx.h"
-# include "minilibx/mlx_int.h"
+# include <mlx.h>
 
 # define X 640
 # define Y 640
@@ -66,17 +66,17 @@ int			handle_loop(void);
 int			handle_input(int keycode, t_fractol *data);
 int			handle_close(t_fractol *data);
 int			handle_zoom(int button, int x, int y, t_fractol *data);
-void		get_color(t_fractol data, int c[3], char *result);
+void		get_color(t_fractol *data, int c[3], char *result);
 void		*ft_memcpy(void *dest, const void *src, size_t n);
-int			crimage(t_fractol data, void (*f)(t_fractol f,
+int			crimage(t_fractol *data, void (*f)(t_fractol *f,
 					t_complex c, char *r));
-double		pix2val(t_fractol data, int n, int xy);
+double		pix2val(t_fractol *data, int n, int xy);
 double		c_real(t_complex c);
 double		c_imag(t_complex c);
 double		c_abs_square(t_complex c);
 t_complex	c_square(t_complex c);
 t_complex	c_add(t_complex c, t_complex d);
-void		mandel(t_fractol data, t_complex c, char *result);
-void		julia(t_fractol data, t_complex c, char *result);
+void		mandel(t_fractol *data, t_complex c, char *result);
+void		julia(t_fractol *data, t_complex c, char *result);
 
 #endif

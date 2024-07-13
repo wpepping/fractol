@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:36:53 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/12 15:35:31 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/13 15:30:27 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(int argc, char *argv[])
 	if (check_input(&data, argc, argv))
 	{
 		init(&data);
-		crimage(data, data.function);
+		crimage(&data, data.function);
 		mlx_put_image_to_window(data.mlx, data.window, data.image, 0, 0);
 		init_events(&data);
 		mlx_loop(data.mlx);
