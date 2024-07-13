@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:50:06 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/13 15:30:59 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/13 15:45:21 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	handle_loop(void)
 
 int	handle_input(int keycode, t_fractol *data)
 {
-	if (keycode == XK_Escape)
+	if (keycode == XK_Escape || keycode == XK_q || keycode == XK_Q)
 	{
 		mlx_loop_end(data->mlx);
 	}

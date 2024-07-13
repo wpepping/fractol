@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:50:56 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/13 15:30:47 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/13 15:41:47 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <math.h>
 # include <X11/Xlib.h>
 # include <X11/keysym.h>
-# include <mlx.h>
+# include "minilibx/mlx.h"
 
 # define X 640
 # define Y 640
@@ -68,7 +68,7 @@ int			handle_close(t_fractol *data);
 int			handle_zoom(int button, int x, int y, t_fractol *data);
 void		get_color(t_fractol *data, int c[3], char *result);
 void		*ft_memcpy(void *dest, const void *src, size_t n);
-int			crimage(t_fractol *data, void (*f)(t_fractol *f,
+void		crimage(t_fractol *data, void (*f)(t_fractol *f,
 					t_complex c, char *r));
 double		pix2val(t_fractol *data, int n, int xy);
 double		c_real(t_complex c);

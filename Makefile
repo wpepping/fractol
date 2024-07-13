@@ -1,24 +1,27 @@
 SRCS = fractol.c mandelbrot.c utils.c events.c crimage.c complex.c julia.c
 
 OBJS = $(SRCS:.c=.o)
-OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 NAME = fractol
 
+LIB_FOLDER = minilibx
+LIB_ARCHIVE = libmlx.a
+LIB_INCLUDE = mlx
+
 CFLAGS = -Wall -Werror -Wextra
-INCLUDES = -L$(LIB_FOLDER) -l$(LIB_COMPILE) -lm -lX11 -lXext -lmlx
+INCLUDES = -L$(LIB_FOLDER) -l$(LIB_INCLUDE) -lm -lX11 -lXext
 
 all: $(NAME)
-bonus: $(NAME_BONUS)
-
 
 $(NAME): $(OBJS)
+	$(MAKE) -C $(LIB_FOLDER)
 	cc $(CFLAGS) $(OBJS) $(INCLUDES) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
+	$(MAKE) clean -C $(LIB_FOLDER)
 	rm -f $(OBJS) $(OBJS_BONUS)
 
 fclean: clean
