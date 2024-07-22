@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:50:06 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/13 22:50:59 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/22 19:23:30 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ int	handle_zoom(int button, int x, int y, t_fractol *data)
 	y_min_real = 1.0 * SCALE * data->zoom;
 	if (x > 10000)
 		return (y_min_real);
-	data->offset_x = - x_real - (1.0 - 2.0 * x / X) * SCALE * data->zoom;
-	data->offset_y = - y_real + (1.0 - 2.0 * y / Y) * SCALE * data->zoom;
+	data->offset_x = -x_real - (1.0 - 2.0 * x / X) * SCALE * data->zoom;
+	data->offset_y = -y_real + (1.0 - 2.0 * y / Y) * SCALE * data->zoom;
 	crimage(data, data->function);
 	mlx_put_image_to_window(data->mlx, data->window, data->image, 0, 0);
 	return (0);
