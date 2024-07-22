@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:50:06 by wpepping          #+#    #+#             */
-/*   Updated: 2024/07/22 19:23:30 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/07/22 19:40:57 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	handle_zoom(int button, int x, int y, t_fractol *data)
 {
 	double	x_real;
 	double	y_real;
-	double	y_min_real;
 
 	x_real = pix2val(data, x, 0);
 	y_real = pix2val(data, y, 1);
@@ -58,10 +57,6 @@ int	handle_zoom(int button, int x, int y, t_fractol *data)
 		data->zoom = data->zoom / ZOOM_FACTOR;
 	if (button == 5)
 		data->zoom = data->zoom * ZOOM_FACTOR;
-	y_min_real = y_real + 2.0 * y / Y * SCALE * data->zoom;
-	y_min_real = 1.0 * SCALE * data->zoom;
-	if (x > 10000)
-		return (y_min_real);
 	data->offset_x = -x_real - (1.0 - 2.0 * x / X) * SCALE * data->zoom;
 	data->offset_y = -y_real + (1.0 - 2.0 * y / Y) * SCALE * data->zoom;
 	crimage(data, data->function);
